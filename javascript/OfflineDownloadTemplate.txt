@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+
+
+<!--
+
+This file is from ${date}, there isn't an official download link bc of DMCA stuff so you will need to compile it yourself.
+
+
+Compile it yourself here: https://github.com/EaglerReborn/EaglerReborn
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="EaglercraftX 1.8 Offline" />
+<meta name="keywords" content="eaglercraft, eaglercraftx, minecraft, 1.8, 1.8.8" />
+<title>Eagler Reborn</title>
+<meta property="og:locale" content="en-US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Eagler Reborn Offline" />
+<meta property="og:description" content="this file is not a website, whoever uploaded it to this URL is a dumbass" />
+<script type="text/javascript">
+"use strict";
+
+
+// %%%%%%%%% launch options %%%%%%%%%%%%
+
+window.eaglercraftXOpts = { container: "game_frame", relayURL: "wss://reborn-relay.otterdev.repl.co", servers: [
+							     { addr: "wss://mercurymc.net", name: "MercuryMC" },
+							
+						     ] 
+};
+
+// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+${classes_js}
+
+window.eaglercraftXOpts.assetsURI = ${assets_epk};
+
+var launchInterval = -1;
+var launchCounter = 1;
+var launchCountdownNumberElement = null;
+var launchCountdownProgressElement = null;
+
+function startAlready() {
+	clearInterval(launchInterval);
+	setTimeout(() => { document.getElementById("launch_countdown_screen").remove(); main(); }, 50);
+}
+
+function launchTick() {
+	launchCountdownNumberElement.innerText = "" + Math.floor(6.0 - launchCounter * 0.06);
+	launchCountdownProgressElement.style.width = "" + launchCounter + "%";
+	if(++launchCounter > 100) {
+		startAlready();
+	}
+}
+
+window.addEventListener("load", () => {
+	launchCountdownNumberElement = document.getElementById("launchCountdownNumber");
+	launchCountdownProgressElement = document.getElementById("launchCountdownProgress");
+	launchInterval = setInterval(launchTick, 50);
+});
+
+</script>
+<link type="image/png" rel="shortcut icon" href="data:image/png;base64,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" />
+</head>
+<body style="margin:0px;width:100vw;height:100vh;overflow:hidden;" id="game_frame">
+<div style="margin:0px;width:100%;height:100%;font-family:sans-serif;display:flex;align-items:center;user-select:none;" id="launch_countdown_screen">
+<div style="margin:auto;text-align:center;">
+<h1>This file is from <span style="color:#AA0000;">${date}</span></h1>
+<h2>Game will launch in <span id="launchCountdownNumber">5</span>... <a href="javascript:void(0)" onclick="startAlready()">(skip)</a></h2>
+<div style="border:2px solid black;width:100%;height:15px;padding:1px;margin-bottom:20vh;"><div id="launchCountdownProgress" style="background-color:#555555;width:0%;height:100%;"></div></div>
+</div>
+</div>
+</body>
+</html>
+
+<!--  otterdev was here  -->
+<!-- And so was ZXMushroom63! Your welcome for the skip button. -->
